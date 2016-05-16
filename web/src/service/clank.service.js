@@ -7,20 +7,23 @@
         var self = this;
 
         this.clank = Clank.connect("ws://localhost:8080");
+        this.session = null;
 
-        clank.on("socket/connect", function(session){
+        self.clank.on("socket/connect", function (session) {
+            self.session = session;
             console.log("Successfully Connected!");
         });
 
-        clank.on("socket/disconnect", function(error){
-            //error provides us with some insight into the disconnection: error.reason and error.code
-
+        self.clank.on("socket/disconnect", function (error) {
             console.log("Disconnected for " + error.reason + " with code " + error.code);
         });
 
         var factory = {
             'getClank': function () {
                 return self.clank;
+            },
+            'getSession': function () {
+                return self.session;
             }
         };
 

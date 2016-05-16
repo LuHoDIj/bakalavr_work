@@ -1,4 +1,3 @@
 services:
-#    bakalavr.example:
-#        class: BakalavrBundle\Example
-#        arguments: ["@service_id", "plain_value", %parameter%]
+    video:
+        class: BakalavrBundle\Topic\VideoTopic
