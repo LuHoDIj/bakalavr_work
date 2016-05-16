@@ -1,0 +1,7 @@
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"
+
+bakalavr:
+    resource: "@BakalavrBundle/Controller/"
+    type:     annotation
+    prefix:   /

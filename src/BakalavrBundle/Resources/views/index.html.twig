@@ -1,0 +1,47 @@
+<html>
+<head>
+    <title>main</title>
+    {% stylesheets
+    '@css' output='compiled/all.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+</head>
+<body>
+
+<div class="container">
+    <form action="{{ path("fos_user_security_check") }}" method="post" class="form-horizontal text-center">
+        <input type="hidden" name="_csrf_token" value="{{ token }}" />
+        <input type="hidden" name="_target_path" value="/video-stream"/>
+
+        <div class="row">
+            <div class="col-xs-12">
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                    <input autocomplete="off" class="form-control" type="text" id="username"
+                           name="_username"
+                           value="" placeholder="{{ "Email Address" }}" required="required"/>
+                </div>
+                <div class="input-group">
+                    <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                    <input autocomplete="off" class="form-control" type="password" id="password"
+                           name="_password" value=""
+                           placeholder="{{ "Password" }}" required="required"/>
+                </div>
+                <div class="input-group">
+                    <input type="submit" id="_submit" name="_submit" value="{{ 'Login' }}"
+                           class="btn btn-success"/>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+
+{% javascripts
+'@vendor' output="compiled/all.js"
+%}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html ng-app="bakalavr">
+<head>
+    <title>main</title>
+    {% stylesheets
+    '@css' output='compiled/all.css'
+    %}
+    <link rel="stylesheet" href="{{ asset_url }}"/>
+    {% endstylesheets %}
+    <base href="/video-stream" />
+</head>
+<body>
+
+<div ui-view></div>
+
+
+{{ clank_client() }}
+{% javascripts
+'@vendor' '@custom' output="compiled/all.js"
+%}
+<script src="{{ asset_url }}"></script>
+{% endjavascripts %}
+</body>
+</html>
