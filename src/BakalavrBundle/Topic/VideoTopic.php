@@ -2,6 +2,7 @@
 
 namespace BakalavrBundle\Topic;
 
+use JDare\ClankBundle\Event\ClientEvent;
 use JDare\ClankBundle\Topic\TopicInterface;
 use Ratchet\ConnectionInterface as Conn;
 
@@ -33,7 +34,6 @@ class VideoTopic implements TopicInterface
         $topic->broadcast($conn->resourceId . " has left " . $topic->getId());
     }
 
-
     /**
      * This will receive any Publish requests for this topic.
      *
@@ -46,15 +46,6 @@ class VideoTopic implements TopicInterface
      */
     public function onPublish(Conn $conn, $topic, $event, array $exclude, array $eligible)
     {
-        /*
-        $topic->getId() will contain the FULL requested uri, so you can proceed based on that
-
-        e.g.
-
-        if ($topic->getId() == "acme/channel/shout")
-            //shout something to all subs.
-        */
-
 
         $topic->broadcast(array(
             "sender" => $conn->resourceId,
