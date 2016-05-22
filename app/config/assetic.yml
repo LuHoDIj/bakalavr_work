@@ -20,7 +20,7 @@ assetic:
                 - 'bower_components/angular-sanitize/angular-sanitize.min.js'
                 - 'bower_components/videogular/videogular.min.js'
                 - 'bower_components/videogular-controls/vg-controls.min.js'
-                - 'src/jquryIndex.js'
+                - 'src/jqueryIndex.js'
 
         custom:
             inputs:

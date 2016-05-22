@@ -17,19 +17,22 @@
         this.onPlayerReady = function ($API) {
             self.videogular = $API;
         };
+        this.video = '';
 
         this.streamVideo = function (data) {
-            $timeout(function () {
-                self.config.sources.push({
-                    src: $sce.trustAsResourceUrl(data),
-                    //src: data,
-                    type: "video/mp4"
-                });
-                console.log('Video downloaded');
-
-                self.videogular.changeSource(self.config.sources);
-                self.videogular.play();
-            });
+            //$timeout(function () {
+            //    self.config.sources.push({
+            //        src: $sce.trustAsResourceUrl(data),
+            //        //src: data,
+            //        type: "video/mp4"
+            //    });
+            //    console.log('Video downloaded');
+            //
+            //    self.videogular.changeSource(self.config.sources);
+            //    self.videogular.play();
+            //});
+            self.video = data;
+            //self.video = $sce.trustAsResourceUrl(data);
         };
 
         this.session = clank.getSession().then(function (session) {

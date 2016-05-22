@@ -55,7 +55,7 @@ class VideoTopic implements TopicInterface
             //shout something to all subs.
         */
 
-        $stream = 'data:video/mp4;base64,' . base64_encode(file_get_contents(__DIR__ . '/../../../web/resources/swoop.mp4'));
+        $stream = 'data:video;base64,' . base64_encode(file_get_contents(__DIR__ . '/../../../web/resources/swoop.mp4'));
 
         $topic->broadcast([
             "msg"    => "stream",
