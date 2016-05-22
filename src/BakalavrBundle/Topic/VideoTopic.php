@@ -46,16 +46,7 @@ class VideoTopic implements TopicInterface
      */
     public function onPublish(Conn $conn, $topic, $event, array $exclude, array $eligible)
     {
-        /*
-        $topic->getId() will contain the FULL requested uri, so you can proceed based on that
-
-        e.g.
-
-        if ($topic->getId() == "acme/channel/shout")
-            //shout something to all subs.
-        */
-
-        $stream = 'data:video;base64,' . base64_encode(file_get_contents(__DIR__ . '/../../../web/resources/swoop.mp4'));
+        $stream = base64_encode(file_get_contents(__DIR__ . '/../../../web/resources/swoop.mp4'));
 
         $topic->broadcast([
             "msg"    => "stream",
