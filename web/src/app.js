@@ -1,15 +1,21 @@
 (function (angular) {
     angular
-        .module('bakalavr', ['ui.router'])
+        .module('bakalavr', [
+            'ui.router',
+            "ngSanitize",
+            "com.2fdevs.videogular",
+            "com.2fdevs.videogular.plugins.controls"
+        ])
         .config(config);
 
     config.$inject = [
         '$stateProvider',
         '$urlRouterProvider',
-        '$locationProvider'
+        '$locationProvider',
+        '$compileProvider'
     ];
 
-    function config($stateProvider, $urlRouterProvider, $locationProvider) {
+    function config($stateProvider, $urlRouterProvider, $locationProvider, $compileProvider) {
         $stateProvider
             .state('index', {
                 'url': '/video-stream',
@@ -19,5 +25,7 @@
 
         $urlRouterProvider.otherwise('/video-stream');
         $locationProvider.html5Mode(true).hashPrefix('!');
+
+        $compileProvider.aHrefSanitizationWhitelist(/^\s*(https?|data):/);
     }
 })(angular);

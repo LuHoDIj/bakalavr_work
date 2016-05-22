@@ -1,18 +1,21 @@
 (function (angular) {
-    angular.module('bakalavr').factory('ClankService', Service);
+    angular.module('bakalavr').factory('clankService', Service);
 
-    Service.$inject = [];
+    Service.$inject = ['$q'];
 
-    function Service() {
+    function Service($q) {
         var self = this;
 
         this.clank = Clank.connect("ws://localhost:8080");
         this.session = null;
 
+        var defer = $q.defer();
         self.clank.on("socket/connect", function (session) {
             self.session = session;
+            defer.resolve(self.session);
             console.log("Successfully Connected!");
         });
+        this.session = defer.promise;
 
         self.clank.on("socket/disconnect", function (error) {
             console.log("Disconnected for " + error.reason + " with code " + error.code);

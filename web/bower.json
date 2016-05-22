@@ -21,6 +21,10 @@
   "dependencies": {
     "angular": "^1.5.5",
     "angular-ui-router": "ui-router#^0.2.18",
-    "bootstrap": "^3.3.6"
+    "bootstrap": "^3.3.6",
+    "videogular": "^1.4.3",
+    "videogular-themes-default": "^1.4.3",
+    "videogular-controls": "^1.4.3",
+    "angular-sanitize": "^1.5.5"
   }
 }

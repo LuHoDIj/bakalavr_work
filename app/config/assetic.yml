@@ -8,14 +8,16 @@ assetic:
     assets:
         css:
             inputs:
-                - 'bower_components/bootstrap/dist/css/bootstrap.min.css'
-                - 'css/*'
+#                - 'bower_components/bootstrap/dist/css/bootstrap.min.css'
+#                - 'css/reset.css'
+#                - 'css/style.css'
         vendor:
             inputs:
                 - 'bower_components/jquery/dist/jquery.min.js'
-                - 'bower_components/bootstrap/dist/js/bootstrap.min.js'
+#                - 'bower_components/bootstrap/dist/js/bootstrap.min.js'
                 - 'bower_components/angular/angular.js'
                 - 'bower_components/angular-ui-router/release/angular-ui-router.min.js'
+                - 'src/jquryIndex.js'
 
         custom:
             inputs:
@@ -23,4 +25,3 @@ assetic:
                 - 'src/service/*'
                 - 'src/controller/*'
                 - 'src/directive/*'
-                - 'src/jquryIndex.js'

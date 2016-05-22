@@ -18,7 +18,7 @@ class VideoTopic implements TopicInterface
     public function onSubscribe(Conn $conn, $topic)
     {
         //this will broadcast the message to ALL subscribers of this topic.
-        $topic->broadcast($conn->resourceId . " has joined " . $topic->getId());
+        $topic->broadcast(['msg' => $conn->resourceId . " has joined " . $topic->getId()]);
     }
 
     /**
@@ -31,7 +31,7 @@ class VideoTopic implements TopicInterface
     public function onUnSubscribe(Conn $conn, $topic)
     {
         //this will broadcast the message to ALL subscribers of this topic.
-        $topic->broadcast($conn->resourceId . " has left " . $topic->getId());
+        $topic->broadcast(['msg' => $conn->resourceId . " has left " . $topic->getId()]);
     }
 
     /**
@@ -39,18 +39,27 @@ class VideoTopic implements TopicInterface
      *
      * @param \Ratchet\ConnectionInterface $conn
      * @param $topic
-     * @param $event
+     * @param ClientEvent $event
      * @param array $exclude
      * @param array $eligible
      * @return mixed|void
      */
     public function onPublish(Conn $conn, $topic, $event, array $exclude, array $eligible)
     {
+        /*
+        $topic->getId() will contain the FULL requested uri, so you can proceed based on that
 
-        $topic->broadcast(array(
-            "sender" => $conn->resourceId,
-            "topic" => $topic->getId(),
-            "event" => $event
-        ));
+        e.g.
+
+        if ($topic->getId() == "acme/channel/shout")
+            //shout something to all subs.
+        */
+
+        $stream = 'data:video/mp4;base64,' . base64_encode(file_get_contents(__DIR__ . '/../../../web/resources/swoop.mp4'));
+
+        $topic->broadcast([
+            "msg"    => "stream",
+            "stream" => $stream,
+        ]);
     }
 }
