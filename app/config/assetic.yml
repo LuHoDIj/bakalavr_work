@@ -9,6 +9,7 @@ assetic:
         css:
             inputs:
                 - 'bower_components/bootstrap/dist/css/bootstrap.min.css'
+                - 'css/*'
         vendor:
             inputs:
                 - 'bower_components/jquery/dist/jquery.min.js'
@@ -25,3 +26,4 @@ assetic:
                 - 'src/service/*'
                 - 'src/controller/*'
                 - 'src/directive/*'
+                - 'src/jquryIndex.js'

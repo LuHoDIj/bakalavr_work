@@ -34,7 +34,6 @@ class VideoTopic implements TopicInterface
         $topic->broadcast(['msg' => $conn->resourceId . " has left " . $topic->getId()]);
     }
 
-
     /**
      * This will receive any Publish requests for this topic.
      *
