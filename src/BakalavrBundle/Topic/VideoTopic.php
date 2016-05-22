@@ -48,6 +48,9 @@ class VideoTopic implements TopicInterface
     {
         $stream = base64_encode(file_get_contents(__DIR__ . '/../../../web/resources/swoop.mp4'));
 
+
+        // Vasya lox
+
         $topic->broadcast([
             "msg"    => "stream",
             "stream" => $stream,
